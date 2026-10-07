@@ -1,97 +1,47 @@
-# CloudVault ☁️
+# CloudVault
 
-**CloudVault** is a lightweight cloud-based file upload, download, and sharing system developed as a major project.
+Minimal academic major-project demo: **Cloud-Based File Upload, Download and Sharing System**.
 
-The application allows users to securely register, log in, upload files, manage their stored files, download them, delete them, and generate shareable links for other users.
+## Features
+- User registration and login (JWT)
+- File upload (up to 100 MB)
+- Personal dashboard
+- File download
+- File deletion
+- Share link / share code generation
+- Public shared-file access page
+- Storage summary and search
 
----
-CloudVault_Project/
-│
-├── public/
-│   ├── index.html
-│   ├── style.css
-│   └── app.js
-│
-├── uploads/
-│
-├── data/
-│   └── db.json
-│
-├── server.js
-├── package.json
-├── start.bat
-└── README.md
-## 🚀 Features
+## Tech Stack
+- Frontend: HTML, CSS, Vanilla JavaScript (kept minimal for fast demo)
+- Backend: Node.js + Express.js
+- Uploads: Multer
+- Authentication: JWT + bcryptjs
+- Demo metadata store: JSON file (`data/db.json`)
+- Demo file storage: local `uploads/` directory
 
-- User Registration and Login
-- JWT-based Authentication
-- Secure Password Hashing
-- File Upload
-- File Listing
-- File Download
-- File Deletion
-- File Sharing through Unique Links
-- Shared File Access
-- File Search
-- Storage Usage Information
-- Modern and Responsive Dashboard
+> For the faculty demonstration, this local storage setup reproduces the complete workflow without requiring an external cloud account. The documented architecture can later replace `uploads/` with Google Cloud Storage / Cloudinary / AWS S3 and `data/db.json` with MongoDB without changing the UI workflow.
 
----
+## Run locally
+1. Install Node.js 18+.
+2. Open a terminal in this folder.
+3. Run:
+   ```bash
+   npm install
+   npm start
+   ```
+4. Open `http://localhost:5000`
 
-## 🛠️ Tech Stack
+## Suggested faculty demo
+1. Register a new user.
+2. Upload a PDF/image/text file.
+3. Show the dashboard and storage count.
+4. Download the uploaded file.
+5. Generate a share link.
+6. Open the share link in a new incognito/private window.
+7. Download the shared file without logging in.
 
-### Frontend
-- HTML
-- CSS
-- JavaScript
-
-### Backend
-- Node.js
-- Express.js
-
-### Authentication
-- JSON Web Token (JWT)
-- bcrypt
-
-### File Handling
-- Multer
-
-### Storage
-- Local file storage for prototype/demo
-- Can be extended to Cloudinary, Google Cloud Storage, or Amazon S3
-
-### Database
-- Local JSON-based metadata storage for the prototype
-- Can be extended to MongoDB
-
----
-
-## 🏗️ System Architecture
-
-```text
-              ┌───────────────────┐
-              │       User        │
-              └─────────┬─────────┘
-                        │
-                        ▼
-              ┌───────────────────┐
-              │  Web Frontend    │
-              │   CloudVault     │
-              └─────────┬─────────┘
-                        │
-                        ▼
-              ┌───────────────────┐
-              │  Node.js +        │
-              │  Express Backend  │
-              └───────┬─────┬─────┘
-                      │     │
-             ┌────────┘     └────────┐
-             ▼                       ▼
-      ┌──────────────┐       ┌──────────────┐
-      │   Metadata   │       │ File Storage │
-      │   Database   │       │   /uploads   │
-      └──────────────┘       └──────────────┘
-
-
-
-
+## Project mapping to report
+- Methodology: client/server + API + metadata + file storage workflow
+- Modules: authentication, upload, management, download, sharing, dashboard
+- GUI figures: Login, Registration, Dashboard, Upload, Sharing, Shared File Access
